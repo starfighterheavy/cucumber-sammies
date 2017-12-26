@@ -1,6 +1,8 @@
 # Cucumber::Sammies
 
-Description to come...
+![Cucumber Sandwhiches](./sammies.jpg)
+
+Simple & tasty step definitions for your Rails application that are meant to compliment [Speewald](https://github.com/makandra/spreewald).
 
 ## Installation
 
