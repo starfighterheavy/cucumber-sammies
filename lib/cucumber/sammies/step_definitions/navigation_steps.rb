@@ -15,7 +15,7 @@ When /^I visit "(.*)"$/ do |path|
   visit path
 end
 
-When /^(?:|I )go to (.+)$/ do |page_name|
+When /^(?:|I )go to the (.+) page$/ do |page_name|
   visit resolve_path(page_name)
 end
 

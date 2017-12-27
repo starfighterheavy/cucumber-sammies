@@ -4,7 +4,7 @@ def resolve_locale(str)
 end
 
 def resolve_path(str)
-  str.gsub(' ', '_') + '_path'
+  send(str.gsub(' ', '_') + '_path')
 end
 
 def resolve_ivar(str)
@@ -16,7 +16,6 @@ def set_ivar(str, value)
   model = str.gsub(' ', '_')
   instance_variable_set("@#{model}", value)
 end
-
 
 def resolve_class(str)
   str.singularize.titleize.gsub(' ', '').constantize
