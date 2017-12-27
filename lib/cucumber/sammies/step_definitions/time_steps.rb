@@ -39,14 +39,14 @@ if defined?(Timecop)
   #     Given the time is 2012-02-10 13:40
   When /^the (?:date|time) is "?(\d{4}-\d{2}-\d{2}(?: \d{1,2}:\d{2})?)"?$/ do |time|
     Timecop.travel(parse_time(time))
-  end.overridable
+  end
 
   # Example:
   #
   #     Given the time is 13:40
   When /^the time is "?(\d{1,2}:\d{2})"?$/ do |time_without_date|
     Timecop.travel(parse_time(time_without_date)) # date will be today
-  end.overridable
+  end
 
   # Example:
   #
@@ -63,7 +63,7 @@ if defined?(Timecop)
     end
     amount = -amount if direction == 'earlier'
     Timecop.travel(current_time + amount.send(unit))
-  end.overridable
+  end
 
   After do
     Timecop.return

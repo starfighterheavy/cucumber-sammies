@@ -10,6 +10,10 @@ When(/^I click the "(.*)" submit button$/) do |link|
   find(link).click
 end
 
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
+
 When(/^I check the ([^"]+) box$/) do |label|
   check resolve_locale(label)
 end
