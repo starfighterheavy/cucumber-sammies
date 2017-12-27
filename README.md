@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/starfighterheavy/cucumber-sammies/badges/gpa.svg)](https://codeclimate.com/github/starfighterheavy/cucumber-sammies)
+[![Dependency Status](https://gemnasium.com/starfighterheavy/cucumber-sammies.svg)](https://gemnasium.com/starfighterheavy/cucumber-sammies)
+
 # Cucumber::Sammies
 
 ![Cucumber Sandwhiches](./sammies.jpg)
