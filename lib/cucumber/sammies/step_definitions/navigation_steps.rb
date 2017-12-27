@@ -15,6 +15,18 @@ When /^I visit "(.*)"$/ do |path|
   visit path
 end
 
+When /^(?:|I )go to (.+)$/ do |page_name|
+  visit _path_to(page_name)
+end
+
+When /^(?:|I )press "([^"]*)"$/ do |button|
+  click_button(button)
+end
+
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
+end
+
 Then(/^I wait ([0-9]+) seconds$/) do |seconds|
   sleep seconds.to_i
 end

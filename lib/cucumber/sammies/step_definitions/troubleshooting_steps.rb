@@ -9,3 +9,7 @@ end
 Then /^I sleep (.*) seconds$/ do |seconds|
   sleep seconds.to_f
 end
+
+Then /^it should work$/ do
+  pending
+end

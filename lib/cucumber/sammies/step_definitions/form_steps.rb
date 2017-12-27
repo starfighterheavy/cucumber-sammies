@@ -42,3 +42,7 @@ def select_year_month(year:, month:, day: nil, field:)
   select month, :from => "#{field}_2i"
   select day, :from => "#{field}_3i" if day
 end
+
+When /^(?:|I )fill in "([^"]*)" (?:with|for) "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
