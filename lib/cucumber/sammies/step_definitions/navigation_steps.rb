@@ -16,7 +16,7 @@ When /^I visit "(.*)"$/ do |path|
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
-  visit _path_to(page_name)
+  visit resolve_path(page_name)
 end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
