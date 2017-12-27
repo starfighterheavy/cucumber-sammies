@@ -1,3 +1,5 @@
+require_relative '../support/resolvers'
+
 Then(/^I am taken to (a|an|the) (.*) page$/) do |inclusive, path|
   path.split(' ').each do |part|
     expect(current_path.split('/')).to include(part)
