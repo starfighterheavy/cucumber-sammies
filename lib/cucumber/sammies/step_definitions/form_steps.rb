@@ -10,6 +10,10 @@ When(/^I click the "(.*)" submit button$/) do |link|
   find(link).click
 end
 
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
+
 When(/^I check the ([^"]+) box$/) do |label|
   check resolve_locale(label)
 end
@@ -41,4 +45,8 @@ def select_year_month(year:, month:, day: nil, field:)
   select year,  :from => "#{field}_1i"
   select month, :from => "#{field}_2i"
   select day, :from => "#{field}_3i" if day
+end
+
+When /^(?:|I )fill in "([^"]*)" (?:with|for) "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
 end
