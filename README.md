@@ -26,13 +26,13 @@ Or install it yourself as:
 
 ## Usage
 
-To use `cucumber-sammies` in your cucumber tests, add this line to your `features/support/env.rb` file.
+To use `cucumber-sammies` in your cucumber tests, add a line like this to your `features/support/env.rb` file.
 
 ```ruby
-require 'cucumber/sammies/step_definitions/*'
+require 'cucumber/sammies/step_definitions/form_steps'
 ```
 
-Or your can require individual step definition files by replacing `*` with the file name you want.
+All the steps can be found in the [step_definitions directory](https://github.com/starfighterheavy/cucumber-sammies/tree/master/lib/cucumber/sammies/step_definitions)
 
 ## Development
 
