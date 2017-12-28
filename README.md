@@ -6,7 +6,7 @@
 
 ![Cucumber Sandwhiches](./sammies.jpg)
 
-Simple & tasty Cucumber step definitions for your Rails application(https://github.com/makandra/spreewald). Many of these steps were originally created by [Spreewald](https://github.com/makandra/spreewald).
+Simple & tasty Cucumber step definitions for your Rails application. Many of these steps were originally created by [Spreewald](https://github.com/makandra/spreewald).
 
 ## Installation
 
