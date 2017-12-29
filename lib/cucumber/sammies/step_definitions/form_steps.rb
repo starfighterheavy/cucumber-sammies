@@ -50,3 +50,26 @@ end
 When /^(?:|I )fill in "([^"]*)" (?:with|for) "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
+
+Then /^nothing should be selected for "([^"]*)"$/ do |field|
+  select = find_field(field)
+  begin
+    selected_option = select.find(:xpath, ".//option[@selected = 'selected']") || select.all(:css, 'option').first
+    value = selected_option ? selected_option.value : nil
+    value.should be_blank
+  rescue Capybara::ElementNotFound
+  end
+end
+
+# Checks for the presence of an option in a select
+Then /^"([^"]*)" should( not)? be an option for "([^"]*)"$/ do |value, negate, field|
+  xpath = ".//option[text() = '#{value}']"
+  if negate
+    begin
+      field_labeled(field).find(:xpath, xpath).should_not be_present
+    rescue Capybara::ElementNotFound
+    end
+  else
+    field_labeled(field).find(:xpath, xpath).should be_present
+  end
+end
