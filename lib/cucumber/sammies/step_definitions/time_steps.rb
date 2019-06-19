@@ -3,7 +3,6 @@
 if defined?(Timecop)
 
   module TimecopHarness
-
     # When you have to make your rails app time zone aware you have to go 100%
     # otherwise you are better off ignoring time zones at all.
     # https://makandracards.com/makandra/8723-guide-to-localizing-a-rails-application
@@ -28,7 +27,6 @@ if defined?(Timecop)
         Time.now
       end
     end
-
   end
 
   World(TimecopHarness)
@@ -54,13 +52,13 @@ if defined?(Timecop)
   #     When it is a few hours earlier
   When /^it is (\d+|a|some|a few) (seconds?|minutes?|hours?|days?|weeks?|months?|years?) (later|earlier)$/ do |amount, unit, direction|
     amount = case amount
-      when 'a'
-        1
-      when 'some', 'a few'
-        10
-      else
-        amount.to_i
-    end
+             when 'a'
+               1
+             when 'some', 'a few'
+               10
+             else
+               amount.to_i
+             end
     amount = -amount if direction == 'earlier'
     Timecop.travel(current_time + amount.send(unit))
   end

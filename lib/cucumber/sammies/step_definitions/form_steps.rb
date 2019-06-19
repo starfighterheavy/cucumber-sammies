@@ -1,5 +1,13 @@
-When(/^I click "(.*)"$/) do |link|
-  click_on link
+When('I confirm') do
+  page.driver.browser.switch_to.alert.accept
+end
+
+When('I hit enter on {string}') do |id|
+  page.find("##{id}").send_keys(:return)
+end
+
+Then('the {string} field should contain {string}') do |label, value|
+  expect(find_field(label).value).to eq(value)
 end
 
 When(/^I click the first "(.*)"$/) do |link|
@@ -11,7 +19,7 @@ When(/^I click the "(.*)" submit button$/) do |link|
 end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
-  select(value, :from => field)
+  select(value, from: field)
 end
 
 When(/^I check the ([^"]+) box$/) do |label|
@@ -42,13 +50,13 @@ def select_year_month(year:, month:, day: nil, field:)
     field = find(:xpath, ".//label[contains(.,'#{field}')]")[:for]
     field.gsub!(/_[1-3]{1}i$/, '')
   end
-  select year,  :from => "#{field}_1i"
-  select month, :from => "#{field}_2i"
-  select day, :from => "#{field}_3i" if day
+  select year,  from: "#{field}_1i"
+  select month, from: "#{field}_2i"
+  select day, from: "#{field}_3i" if day
 end
 
 When /^(?:|I )fill in "([^"]*)" (?:with|for) "([^"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
+  fill_in(field, with: value)
 end
 
 Then /^nothing should be selected for "([^"]*)"$/ do |field|
@@ -58,6 +66,7 @@ Then /^nothing should be selected for "([^"]*)"$/ do |field|
     value = selected_option ? selected_option.value : nil
     value.should be_blank
   rescue Capybara::ElementNotFound
+    Rails.logger.info "Element not found: #{field}"
   end
 end
 
@@ -68,6 +77,7 @@ Then /^"([^"]*)" should( not)? be an option for "([^"]*)"$/ do |value, negate, f
     begin
       field_labeled(field).find(:xpath, xpath).should_not be_present
     rescue Capybara::ElementNotFound
+      Rails.logger.info "Element not found: #{field}"
     end
   else
     field_labeled(field).find(:xpath, xpath).should be_present

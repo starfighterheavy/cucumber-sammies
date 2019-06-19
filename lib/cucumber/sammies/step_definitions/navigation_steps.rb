@@ -1,12 +1,51 @@
 require_relative '../support/resolvers'
 
+When('I switch to the new tab') do
+  page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
+end
+
+Then('the {string} button should be disabled') do |text|
+  expect(page).to have_button(text, disabled: true)
+end
+
+When('I hover over {string}') do |el|
+  page.find(el).hover
+end
+
+When('I click the {word} {string} icon') do |index, icon|
+  page.all('i', text: icon)[index.to_i - 1].click
+  sleep(1)
+end
+
+Then('I should see {int} {string} icons') do |count, icon|
+  expect(page.all('i', text: icon).size).to eq(count)
+end
+
+Then('I should not see a {string} icon') do |icon|
+  expect(page.all('i', text: icon).size).to eq(0)
+end
+
+When('I click the first {string} button') do |button|
+  first(:button, button).click
+end
+
+When('I click the {string} icon') do |icon|
+  page.find('i', text: /#{icon}/i).click
+end
+
+When(/^I click "(.*)"$/) do |link|
+  click_on link
+end
+
+When 'I reload the page' do
+  visit current_url
+end
+
 Then(/^I am taken to (a|an|the) (.*) page$/) do |inclusive, path|
   path.split(' ').each do |part|
     expect(current_path.split('/')).to include(part)
   end
-  unless inclusive == 'the'
-    expect(current_path.split('/').last.to_i).to be > 0
-  end
+  expect(current_path.split('/').last.to_i).to be > 0 unless inclusive == 'the'
 end
 
 When(/^I set the subdomain to "(.*)"$/) do |subdomain|
@@ -48,8 +87,8 @@ Then /^(?:|I )should be on the (.+) page$/ do |page_name|
   expected_path = resolve_path(page_name)
 
   # Consider two pages equal if they only differ by a trailing slash.
-  current_path = expected_path if current_path.chomp("/") == expected_path.chomp("/")
-  current_path = expected_path if current_path.gsub("/#", "#") == expected_path.gsub("/#", "#")
+  current_path = expected_path if current_path.chomp('/') == expected_path.chomp('/')
+  current_path = expected_path if current_path.gsub('/#', '#') == expected_path.gsub('/#', '#')
 
   current_path.should == expected_path
 end
