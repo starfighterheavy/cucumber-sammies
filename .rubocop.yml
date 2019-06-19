@@ -416,7 +416,7 @@ Style/UnneededSort:
   Enabled: true
 
 Security/Eval:
-  Enabled: true
+  Enabled: false
 
 Security/JSONLoad:
   Enabled: true
