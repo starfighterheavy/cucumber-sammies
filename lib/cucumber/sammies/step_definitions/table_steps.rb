@@ -3,8 +3,8 @@ Then /^I should not see the table "(.*)"$/ do |caption|
 end
 
 Then /^the table "(.*)" should contain:$/ do |caption, data|
-  table = page.find('caption', text: caption).first(:xpath,".//..").all('tr').map { |tr|
-    tr.all('th,td').map { |col| col.text }
-  }
+  table = page.find('caption', text: caption).first(:xpath, './/..').all('tr').map do |tr|
+    tr.all('th,td').map(&:text)
+  end
   data.diff!(table)
 end
