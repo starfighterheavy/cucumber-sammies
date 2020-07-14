@@ -11,7 +11,7 @@ When /^I log the page$/ do
 end
 
 Then /^I pry$/ do
-  binding.pry
+  binding.pry # rubocop:disable Lint/Debugger
 end
 
 Then /^I sleep (.*) seconds$/ do |seconds|
