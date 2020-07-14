@@ -3,6 +3,9 @@
 
 AllCops:
   Exclude:
+    - 'config/**/*'
+    - 'lib/tasks/**/*'
+    - 'db/schema.rb'
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
@@ -75,7 +78,7 @@ Layout/IndentationWidth:
 Layout/InitialIndentation:
   Enabled: true
 
-Layout/LeadingBlankLines:
+Layout/LeadingEmptyLines:
   Enabled: true
 
 Layout/SpaceAfterColon:
@@ -102,10 +105,10 @@ Layout/SpaceBeforeComma:
 Layout/SpaceInsideStringInterpolation:
   Enabled: true
 
-Layout/Tab:
+Layout/IndentationStyle:
   Enabled: true
 
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: true
 
 Layout/TrailingWhitespace:
@@ -121,7 +124,7 @@ Lint/CircularArgumentReference:
   Enabled: true
 
 Lint/Debugger:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateCaseCondition:
   Enabled: true
@@ -129,7 +132,7 @@ Lint/DuplicateCaseCondition:
 Lint/DuplicateMethods:
   Enabled: true
 
-Lint/DuplicatedKey:
+Lint/DuplicateHashKey:
   Enabled: true
 
 Lint/EachWithObjectArgument:
@@ -159,7 +162,7 @@ Lint/FloatOutOfRange:
 Lint/FormatParameterMismatch:
   Enabled: true
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: true
 
 Lint/ImplicitStringConcatenation:
@@ -186,7 +189,7 @@ Lint/Loop:
 Lint/MissingCopEnableDirective:
   Enabled: true
 
-Lint/MultipleCompare:
+Lint/MultipleComparison:
   Enabled: true
 
 Lint/NestedMethodDefinition:
@@ -250,7 +253,7 @@ Lint/ShadowedException:
 Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Enabled: true
 
 Lint/Syntax:
@@ -262,10 +265,10 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: true
 
-Lint/UnneededRequireStatement:
+Lint/RedundantRequireStatement:
   Enabled: true
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: true
 
 Lint/UnreachableCode:
@@ -301,7 +304,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Enabled: true
-  Max: 50
+  Max: 100
 
 Metrics/BlockNesting:
   Enabled: true
@@ -316,14 +319,14 @@ Metrics/CyclomaticComplexity:
   Enabled: true
   Max: 12
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: true
   Max: 200
 
 Metrics/MethodLength:
   Description: 'Avoid long methods.'
   Enabled: true
-  Max: 30
+  Max: 50
 
 Metrics/ModuleLength:
   Description: 'Avoid long modules.'
@@ -337,7 +340,7 @@ Metrics/ParameterLists:
 
 Metrics/PerceivedComplexity:
   Enabled: true
-  Max: 10
+  Max: 15
 
 Performance/Caller:
   Enabled: true
@@ -412,11 +415,11 @@ Performance/TimesMap:
 Performance/UnfreezeString:
   Enabled: true
 
-Style/UnneededSort:
+Style/RedundantSort:
   Enabled: true
 
 Security/Eval:
-  Enabled: false
+  Enabled: true
 
 Security/JSONLoad:
   Enabled: true
