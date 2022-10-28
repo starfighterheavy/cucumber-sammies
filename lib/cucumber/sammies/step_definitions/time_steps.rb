@@ -8,8 +8,8 @@ if defined?(Timecop)
     # https://makandracards.com/makandra/8723-guide-to-localizing-a-rails-application
 
     def use_timezones?
-      active_record_loaded = defined?(ActiveRecord::Base)
-      (!active_record_loaded || ActiveRecord::Base.default_timezone != :local) && Time.zone
+      active_record_loaded = defined?(ActiveRecord)
+      (!active_record_loaded || ActiveRecord.default_timezone != :local) && Time.zone
     end
 
     def parse_time(str)
